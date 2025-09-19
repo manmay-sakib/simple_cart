@@ -52,6 +52,7 @@ dependencies:
   shimmer: ^3.0.0
   cached_network_image: ^3.4.1
   connectivity_plus: ^7.0.0
+  mocktail: ^1.0.4
 
 
 dev_dependencies:
