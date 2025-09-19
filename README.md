@@ -75,6 +75,22 @@ flutter test
 - Offline data sync may fail if the cache is corrupted
 
 ## Screenshots / Demo
-![Product List](screenshots/product_list.png)
-![Cart](screenshots/cart.png)
+![Product List 1](screenshots/products_list_view.jpg)
+![Product List 2](screenshots/products_grid_view.jpg)
+![Product List 3](screenshots/products_grid_view_fav.jpg)
+![Product List 3](screenshots/product_list_view_fav.jpg)
+![Product Details 1](screenshots/product_details.jpg)
+![Product Details 2](screenshots/product_details_fav.jpg)
+![Product Details 3](screenshots/product_details_initial.jpg)
+
+![Cart1](screenshots/single_item_cart.jpg)
+![Cart2](screenshots/multiple_item_cart.jpg)
+
+![Checkout 1](screenshots/checkout_screen.jpg)
+![Checkout 2](screenshots/checkout_with_validation.jpg)
+![Checkout 3](screenshots/checkout_success.jpg)
+
+![Search](screenshots/search_screen.jpg)
+
+
 [Demo Video](link-to-demo-video)

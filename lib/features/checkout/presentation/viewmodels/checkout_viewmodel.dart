@@ -33,7 +33,7 @@ class CheckoutViewModel extends Notifier<CheckoutState> {
     state = state.copyWith(isLoading: true, error: null);
 
     // Simulate network delay
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     // On success: clear cart
     ref.read(cartProvider.notifier).clearCart();
