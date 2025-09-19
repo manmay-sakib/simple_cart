@@ -55,7 +55,7 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
       ),
       body: Column(
         children: [
-          /// 🔎 Search Bar
+          /// Search Bar
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(

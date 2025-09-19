@@ -27,7 +27,7 @@ class ProductDetailsScreen extends ConsumerWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            context.pop();
+            context.goNamed('product-list');
           },
         ),
         title: const Text('Product Details'),
@@ -36,7 +36,7 @@ class ProductDetailsScreen extends ConsumerWidget {
           IconButton(
             icon: Stack(
               children: [
-                const Icon(Icons.shopping_cart),
+                const Icon(Icons.shopping_cart, size: 26),
                 if (cartItemCount > 0)
                   Positioned(
                     right: 0,
@@ -151,7 +151,10 @@ class ProductDetailsScreen extends ConsumerWidget {
                     onPressed: () {
                       cartNotifier.addToCart(product);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Added to cart')),
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Added to cart'),
+                        ),
                       );
                     },
                     child: const Padding(

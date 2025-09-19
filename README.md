@@ -1,19 +1,32 @@
-# simple_cart
+# CartBuddy
 
-A new Flutter project.
+A Flutter-based shopping app for managing products, favorites, and cart items.
 
-## Getting Started
+## Setup Steps
 
-This project is a starting point for a Flutter application.
+Make sure you have the following installed:
 
-A few resources to get you started if this is your first Flutter project:
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- [Android Studio](https://developer.android.com/studio) or VS Code with Flutter & Dart plugins
+- [Xcode](https://developer.apple.com/xcode/) (for iOS development on macOS)
+- A connected device or emulator/simulator
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Verify setup:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+flutter doctor
+git clone <your-repo-url>
+cd CartBuddy
+flutter pub get
+flutter pub run flutter_native_splash:create
+flutter pub run flutter_launcher_icons:main
+flutter run
+flutter run -d android
+flutter run -d ios
+flutter run -d chrome
+flutter test
+```
+
 
 ## Architecture Overview
 
@@ -48,3 +61,20 @@ samples, guidance on mobile development, and a full API reference.
 └───test
 
 ```
+
+## Features Implemented
+- Browse products with pagination
+- View product details
+- Add/remove items from cart
+- Mark/unmark favorites
+- Offline support with cached data
+- Search products
+
+## Known Issues
+- Some tests may fail if SharedPreferences is not mocked correctly
+- Offline data sync may fail if the cache is corrupted
+
+## Screenshots / Demo
+![Product List](screenshots/product_list.png)
+![Cart](screenshots/cart.png)
+[Demo Video](link-to-demo-video)

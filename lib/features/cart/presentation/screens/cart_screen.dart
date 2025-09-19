@@ -106,45 +106,64 @@ class CartScreen extends ConsumerWidget {
                                       const SizedBox(height: 8),
 
                                       // Quantity controls
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey.shade200,
-                                          borderRadius: BorderRadius.circular(
-                                            8,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey.shade200,
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                IconButton(
+                                                  icon: const Icon(
+                                                    Icons.remove_circle_outline,
+                                                    color: Colors.deepPurple,
+                                                  ),
+                                                  onPressed: () {
+                                                    cartNotifier
+                                                        .decreaseQuantity(
+                                                          product,
+                                                        );
+                                                  },
+                                                ),
+                                                Text(
+                                                  '$quantity',
+                                                  style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                  icon: const Icon(
+                                                    Icons.add_circle_outline,
+                                                    color: Colors.deepPurple,
+                                                  ),
+                                                  onPressed: () {
+                                                    cartNotifier.addToCart(
+                                                      product,
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            IconButton(
-                                              icon: const Icon(
-                                                Icons.remove_circle_outline,
-                                                color: Colors.deepPurple,
-                                              ),
-                                              onPressed: () {
-                                                cartNotifier.decreaseQuantity(
-                                                  product,
-                                                );
-                                              },
+                                          IconButton(
+                                            icon: const Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
                                             ),
-                                            Text(
-                                              '$quantity',
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            IconButton(
-                                              icon: const Icon(
-                                                Icons.add_circle_outline,
-                                                color: Colors.deepPurple,
-                                              ),
-                                              onPressed: () {
-                                                cartNotifier.addToCart(product);
-                                              },
-                                            ),
-                                          ],
-                                        ),
+                                            onPressed: () {
+                                              cartNotifier.removeFromCart(
+                                                product,
+                                              );
+                                            },
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
