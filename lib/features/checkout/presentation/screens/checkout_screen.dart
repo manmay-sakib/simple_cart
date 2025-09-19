@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/widgets/gradient_button.dart';
 import '../viewmodels/checkout_viewmodel.dart';
 
 class CheckoutScreen extends ConsumerWidget {
@@ -32,49 +33,12 @@ class CheckoutScreen extends ConsumerWidget {
                   style: TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 24),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color(0xFF6A1B9A),
-                        Color(0xFF8E24AA),
-                      ], // sleek blue gradient
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.15),
-                        blurRadius: 6,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Colors.transparent, // keep gradient visible
-                      shadowColor: Colors.transparent,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    onPressed: () {
-                      notifier.reset();
-                      context.goNamed("product-list");
-                    },
-                    child: const Text(
-                      'Back to Shop',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                GradientButton(
+                  label: "Back to Shop",
+                  onPressed: () {
+                    notifier.reset();
+                    context.goNamed("product-list");
+                  },
                 ),
               ],
             ),
@@ -125,42 +89,9 @@ class CheckoutScreen extends ConsumerWidget {
             const SizedBox(height: 24),
             state.isLoading
                 ? const CircularProgressIndicator()
-                : Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF6A1B9A), Color(0xFF8E24AA)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.1),
-                          blurRadius: 6,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      onPressed: () => notifier.submit(ref),
-                      child: const Text(
-                        'Place Order',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
+                : GradientButton(
+                    label: "Place Order",
+                    onPressed: () => notifier.submit(ref),
                   ),
           ],
         ),
