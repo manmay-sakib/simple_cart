@@ -1,4 +1,3 @@
-// Add this import for network connectivity checks
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:convert';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -17,7 +16,6 @@ class ProductListViewmodel extends _$ProductListViewmodel {
   late List<ProductModel> _allProducts;
   final Map<int, bool> _favorites = {};
 
-  // Define a key for SharedPreferences
   static const String _productListKey = 'product_list_data';
 
   @override
@@ -33,23 +31,19 @@ class ProductListViewmodel extends _$ProductListViewmodel {
         connectivityResult.contains(ConnectivityResult.mobile) ||
         connectivityResult.contains(ConnectivityResult.wifi);
 
-    // If online, fetch from network. If offline, load from cache.
     if (isConnected) {
       final result = await ref.read(getProductListUsecaseProvider.future);
       return result.match(
         (failure) async {
-          // If network fails, try to load from cache
           return _loadFromCache(prefs, failure.message);
         },
         (products) async {
           _allProducts = products;
-          // Save successful fetch to SharedPreferences
           await _saveToCache(prefs, products);
           return initializeState(products, prefs);
         },
       );
     } else {
-      // Load from cache when offline
       return _loadFromCache(
         prefs,
         "You are currently offline. Showing cached data.",
@@ -57,7 +51,6 @@ class ProductListViewmodel extends _$ProductListViewmodel {
     }
   }
 
-  // New helper method to load data from cache
   Future<ProductListState> _loadFromCache(
     SharedPreferences prefs,
     String errorMessage,
@@ -77,7 +70,6 @@ class ProductListViewmodel extends _$ProductListViewmodel {
     }
   }
 
-  // New helper method to save data to cache
   Future<void> _saveToCache(
     SharedPreferences prefs,
     List<ProductModel> products,
@@ -87,7 +79,6 @@ class ProductListViewmodel extends _$ProductListViewmodel {
     await prefs.setString(_productListKey, jsonString);
   }
 
-  // New helper method to initialize the state from a list of products
   Future<ProductListState> initializeState(
     List<ProductModel> products,
     SharedPreferences prefs,
@@ -138,7 +129,6 @@ class ProductListViewmodel extends _$ProductListViewmodel {
   }
 
   Future<void> toggleFavorite(ProductModel product) async {
-    // ... your existing code for toggling favorites and persisting it
     final stateNow = state.asData?.value;
     if (stateNow == null) return;
 
@@ -159,7 +149,6 @@ class ProductListViewmodel extends _$ProductListViewmodel {
     await prefs.setStringList('favorite_ids', favoriteIds);
   }
 
-  // your existing searchProducts, syncFavorite, and loadMore methods
   Future<void> searchProducts(String query) async {
     final stateNow = state.asData?.value;
     if (stateNow == null) return;
