@@ -45,7 +45,7 @@ class ProductListViewmodel extends _$ProductListViewmodel {
           _allProducts = products;
           // Save successful fetch to SharedPreferences
           await _saveToCache(prefs, products);
-          return _initializeState(products, prefs);
+          return initializeState(products, prefs);
         },
       );
     } else {
@@ -67,7 +67,7 @@ class ProductListViewmodel extends _$ProductListViewmodel {
       final List<dynamic> jsonList = jsonDecode(cachedData);
       final products = jsonList.map((e) => ProductModel.fromJson(e)).toList();
       _allProducts = products;
-      return _initializeState(products, prefs);
+      return initializeState(products, prefs);
     } else {
       return ProductListState(
         isLoading: false,
@@ -88,7 +88,7 @@ class ProductListViewmodel extends _$ProductListViewmodel {
   }
 
   // New helper method to initialize the state from a list of products
-  Future<ProductListState> _initializeState(
+  Future<ProductListState> initializeState(
     List<ProductModel> products,
     SharedPreferences prefs,
   ) async {
@@ -124,7 +124,7 @@ class ProductListViewmodel extends _$ProductListViewmodel {
         },
         (products) async {
           await _saveToCache(prefs, products);
-          return AsyncData(await _initializeState(products, prefs));
+          return AsyncData(await initializeState(products, prefs));
         },
       );
     } else {

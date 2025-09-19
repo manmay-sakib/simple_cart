@@ -19,7 +19,9 @@ class ProductRepositoryImpl implements ProductRepository {
         );
       }
       if (response.isEmpty) {
-        return left(Failure.unknown());
+        return left(
+          Failure(message: "Something went wrong on Fetching product list"),
+        );
       }
       return left(
         const Failure(message: "Something went wrong on Fetching product list"),

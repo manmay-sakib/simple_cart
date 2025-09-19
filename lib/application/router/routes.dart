@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:simple_cart/features/cart/presentation/screens/cart_screen.dart';
 import 'package:simple_cart/features/product/presentation/screens/product_list_screen.dart';
 
-import '../features/checkout/presentation/screens/checkout_screen.dart';
-import '../features/product/presentation/screens/product_details_screen.dart';
+import '../../features/checkout/presentation/screens/checkout_screen.dart';
+import '../../features/product/presentation/screens/product_details_screen.dart';
 
 part 'routes.g.dart';
 
