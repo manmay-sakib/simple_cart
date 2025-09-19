@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'request_response_logging_interceptor.g.dart';
@@ -9,7 +8,7 @@ RequestResponseLoggingInterceptor requestResponseLoggingInterceptor(Ref ref) {
   return RequestResponseLoggingInterceptor();
 }
 
-class RequestResponseLoggingInterceptor extends Interceptor with Logging {
+class RequestResponseLoggingInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     final String message =

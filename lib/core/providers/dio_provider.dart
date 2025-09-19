@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:simple_cart/core/interceptors/request_response_logging_interceptor.dart';
 
 part 'dio_provider.g.dart';
 
@@ -15,12 +16,13 @@ BaseOptions baseOptions(Ref ref, bool validateUnauthorized) {
   );
 }
 
-
 @riverpod
 Dio dio(Ref ref) {
   final BaseOptions baseOptions = ref.watch(baseOptionsProvider(false));
-  
-  final loggingInterceptor = ref.read(reque)
-  
+
+  final loggingInterceptor = ref.read(
+    requestResponseLoggingInterceptorProvider,
+  );
+
   return Dio(baseOptions)..interceptors.add(loggingInterceptor);
 }

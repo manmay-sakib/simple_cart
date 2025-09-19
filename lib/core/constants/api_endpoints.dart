@@ -1,4 +1,4 @@
-class Endpoints {
+class ApiEndpoints {
   // Base Url
   static const String baseUrl = "https://fakestoreapi.com";
 
