@@ -1,11 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../cart/presentation/viewmodels/cart_viewmodel.dart';
 import '../../domain/models/product_model.dart';
-import '../components/product_details_shimmer.dart';
 import '../viewmodels/product_details_viewmodel.dart';
 
 class ProductDetailsScreen extends ConsumerWidget {
@@ -72,7 +71,8 @@ class ProductDetailsScreen extends ConsumerWidget {
         ],
       ),
       body: state.when(
-        loading: () => const ProductDetailsShimmer(),
+        //loading: () => const ProductDetailsShimmer(),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, _) => Center(child: Text("Error: $err")),
         data: (data) {
           final product = data.product;
@@ -229,7 +229,8 @@ class ProductDetailsScreen extends ConsumerWidget {
                     height: 300,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    placeholder: (_, _) => const ProductImageShimmer(),
+                    placeholder: (_, _) =>
+                        const Center(child: CircularProgressIndicator()),
                     errorWidget: (_, _, _) =>
                         const Center(child: Icon(Icons.broken_image, size: 50)),
                   ),

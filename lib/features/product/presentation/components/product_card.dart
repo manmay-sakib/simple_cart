@@ -44,7 +44,8 @@ class ProductCard extends StatelessWidget {
             imageUrl: product.image,
             fit: BoxFit.cover,
             placeholder: (context, url) =>
-                const ProductCardShimmer(isGrid: true),
+                //const ProductCardShimmer(isGrid: true),
+                const Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) =>
                 const Center(child: Icon(Icons.broken_image)),
           ),
@@ -86,11 +87,12 @@ class ProductCard extends StatelessWidget {
         // Image
         CachedNetworkImage(
           imageUrl: product.image,
-          width: 120,
+          width: 160,
           height: double.infinity,
           fit: BoxFit.cover,
           placeholder: (context, url) =>
-              const ProductCardShimmer(isGrid: false),
+              //const ProductCardShimmer(isGrid: false),
+              const Center(child: CircularProgressIndicator()),
           errorWidget: (context, url, error) =>
               const Center(child: Icon(Icons.broken_image)),
         ),
@@ -101,6 +103,7 @@ class ProductCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   product.title,
