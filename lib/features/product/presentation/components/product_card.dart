@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../domain/models/product_model.dart';
-import 'product_card_shimmer.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
@@ -44,7 +43,6 @@ class ProductCard extends StatelessWidget {
             imageUrl: product.image,
             fit: BoxFit.cover,
             placeholder: (context, url) =>
-                //const ProductCardShimmer(isGrid: true),
                 const Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) =>
                 const Center(child: Icon(Icons.broken_image)),
@@ -91,7 +89,6 @@ class ProductCard extends StatelessWidget {
           height: double.infinity,
           fit: BoxFit.cover,
           placeholder: (context, url) =>
-              //const ProductCardShimmer(isGrid: false),
               const Center(child: CircularProgressIndicator()),
           errorWidget: (context, url, error) =>
               const Center(child: Icon(Icons.broken_image)),

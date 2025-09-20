@@ -71,7 +71,6 @@ class ProductDetailsScreen extends ConsumerWidget {
         ],
       ),
       body: state.when(
-        //loading: () => const ProductDetailsShimmer(),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, _) => Center(child: Text("Error: $err")),
         data: (data) {
